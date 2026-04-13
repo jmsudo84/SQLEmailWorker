@@ -1,5 +1,13 @@
 [
   {
+    "version": "1.0.2",
+    "date": "13-04-2026",
+    "changes": [
+      "Fix: kolom 'Datum/Tijd' hernoemd naar 'Tijd' en toont nu enkel HH:mm:ss",
+      "Fix: reden-extractie zoekt nu correct over twee aparte logregels — eerst 'Do Clearing Id = {id}', daarna 'API RESULT =>' op volgende regel"
+    ]
+  },
+  {
     "version": "1.0.1",
     "date": "13-04-2026",
     "changes": [

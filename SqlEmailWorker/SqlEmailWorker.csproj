@@ -5,10 +5,10 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-SqlEmailWorker-c3149eed-ebbe-455e-9876-f0739842bd24</UserSecretsId>
-    <Version>1.0.1</Version>
-    <FileVersion>1.0.1</FileVersion>
-    <AssemblyVersion>1.0.1</AssemblyVersion>
-    <ReleaseDate>13-04-2026 11:36</ReleaseDate>
+    <Version>1.0.2</Version>
+    <FileVersion>1.0.2</FileVersion>
+    <AssemblyVersion>1.0.2</AssemblyVersion>
+    <ReleaseDate>13-04-2026 11:46</ReleaseDate>
     <Authors>Yourpos — Stephan Udo</Authors>
     <Company>Yourpos</Company>
     <Description>Windows Service die dagelijks clearing-transacties ophaalt uit SQL Server en verstuurt als HTML e-mailrapport via SMTP.</Description>
