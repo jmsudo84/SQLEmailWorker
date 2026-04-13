@@ -1,5 +1,19 @@
 [
   {
+    "version": "1.0.1",
+    "date": "13-04-2026",
+    "changes": [
+      "Nieuw: sectie 'Retry Clearings' in dagelijkse e-mail — toont clearings die vandaag opnieuw zijn ingeshoten maar een eerdere clearingdatum hebben",
+      "Nieuw: sectie 'Nieuwe Clearings' in dagelijkse e-mail — toont clearings van de rapportdatum",
+      "Nieuw: kolom 'Reden' in tabel — leest errorMessage uit logbestand (logfile-PayNlManager-dd-MM-yyyy.txt) voor gefaalde clearings (state=3)",
+      "Nieuw: LogFilePath instelbaar via appsettings.json",
+      "Tabelkolommen bijgewerkt: Datum/Tijd, MerchantCode, Merchant, Clearingdatum, Bedrag, Status, Reden",
+      "Migratie naar .NET 10 en Microsoft.Extensions packages 10.0.5",
+      "Fix: logbestand geopend met FileShare.ReadWrite zodat lezen veilig is terwijl PAYNL Manager schrijft",
+      "Fix: Dapper-resultaten gematerialiseerd naar List om dubbele enumeratie te voorkomen"
+    ]
+  },
+  {
     "version": "1.0.0",
     "date": "13-04-2026",
     "changes": [
