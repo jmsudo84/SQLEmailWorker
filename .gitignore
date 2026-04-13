@@ -1,0 +1,47 @@
+## .NET / Visual Studio
+bin/
+obj/
+publish/
+*.user
+*.suo
+.vs/
+*.rsuser
+
+## Build output
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+
+## NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+!**/packages/build/
+
+## App settings with secrets — use appsettings.example.json as template
+appsettings.json
+appsettings.*.json
+!appsettings.example.json
+
+## User secrets
+secrets.json
+
+## OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+## Rider / JetBrains
+.idea/
+*.sln.iml
+
+## VS Code
+.vscode/
