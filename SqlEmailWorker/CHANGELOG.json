@@ -1,0 +1,14 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "13-04-2026",
+    "changes": [
+      "Initiële release van de SQL Email Worker Windows Service",
+      "Dagelijkse clearing rapportage via SQL Server query (Dapper)",
+      "HTML e-mail verzending via SMTP (MailKit) met meerdere ontvangers",
+      "Configureerbare planningstijd en DayOffset via appsettings.json",
+      "RunOnStartup optie voor directe uitvoering bij opstarten",
+      "Correcte CancellationToken-afhandeling voor netjes stoppen als Windows Service"
+    ]
+  }
+]
