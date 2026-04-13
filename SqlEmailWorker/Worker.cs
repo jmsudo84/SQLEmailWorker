@@ -161,26 +161,35 @@ public class Worker : BackgroundService
     private static string? LeesReden(string[] logRegels, string clearingId)
     {
         const string zoekterm = "API RESULT =>";
-        foreach (var regel in logRegels)
+        var idZoekterm = $"Do Clearing Id = {clearingId}";
+
+        for (int i = 0; i < logRegels.Length - 1; i++)
         {
-            if (!regel.Contains(clearingId) || !regel.Contains(zoekterm))
+            if (!logRegels[i].Contains(idZoekterm))
                 continue;
 
-            var jsonStart = regel.IndexOf(zoekterm) + zoekterm.Length;
-            var json = regel[jsonStart..].Trim();
+            // ID gevonden — zoek in de volgende regels naar API RESULT =>
+            for (int j = i + 1; j < Math.Min(i + 5, logRegels.Length); j++)
+            {
+                if (!logRegels[j].Contains(zoekterm))
+                    continue;
 
-            try
-            {
-                using var doc = JsonDocument.Parse(json);
-                if (doc.RootElement.TryGetProperty("request", out var request) &&
-                    request.TryGetProperty("errorMessage", out var errorMessage))
+                var jsonStart = logRegels[j].IndexOf(zoekterm) + zoekterm.Length;
+                var json = logRegels[j][jsonStart..].Trim();
+
+                try
                 {
-                    return errorMessage.GetString();
+                    using var doc = JsonDocument.Parse(json);
+                    if (doc.RootElement.TryGetProperty("request", out var request) &&
+                        request.TryGetProperty("errorMessage", out var errorMessage))
+                    {
+                        return errorMessage.GetString();
+                    }
                 }
-            }
-            catch
-            {
-                // Ongeldige JSON in logfile — reden overslaan
+                catch
+                {
+                    // Ongeldige JSON in logfile — reden overslaan
+                }
             }
         }
 
@@ -218,7 +227,7 @@ public class Worker : BackgroundService
 
         sb.Append("<table border='0' cellpadding='8' style='border-collapse: collapse; font-family: Arial, sans-serif; width: 100%; min-width: 700px;'>");
         sb.Append("<tr style='background-color: #004a99; color: white; text-align: left;'>");
-        sb.Append("<th>Datum/Tijd</th><th>MerchantCode</th><th>Merchant</th><th>Clearingdatum</th><th>Bedrag</th><th>Status</th><th>Reden</th></tr>");
+        sb.Append("<th>Tijd</th><th>MerchantCode</th><th>Merchant</th><th>Clearingdatum</th><th>Bedrag</th><th>Status</th><th>Reden</th></tr>");
 
         decimal totaal = 0;
         foreach (var item in data)
@@ -235,7 +244,7 @@ public class Worker : BackgroundService
                 reden = LeesReden(logRegels, ((object)item.id).ToString()!) ?? "";
 
             sb.Append("<tr style='border-bottom: 1px solid #ddd;'>");
-            sb.Append($"<td>{item.apiCallDate:dd-MM-yyyy HH:mm:ss}</td>");
+            sb.Append($"<td>{item.apiCallDate:HH:mm:ss}</td>");
             sb.Append($"<td>{item.MerchantCode}</td>");
             sb.Append($"<td>{item.MerchantName}</td>");
             sb.Append($"<td>{item.clearingDate:dd-MM-yyyy}</td>");
